@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Задачи</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box; /* Чтобы padding не раздувал ширину */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+        .task-item {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .task-date {
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Новая задача</h2>
+
+    <div class="form-group">
+        <label for="taskDesc">Описание задачи</label>
+        <input type="text" id="taskDesc" placeholder="Что нужно сделать?">
+    </div>
+
+    <div class="form-group">
+        <label for="taskDate">Дата выполнения</label>
+        <input type="date" id="taskDate">
+    </div>
+
+    <button onclick="addTask()">Записать</button>
+
+    <hr>
+
+    <ul id="taskList" class="task-list">
+    </ul>
+</div>
+
+<script>
+    function addTask() {
+        const desc = document.getElementById('taskDesc').value;
+        const date = document.getElementById('taskDate').value;
+
+        if (desc === '' || date === '') {
+            alert('Пожалуйста, заполните все поля');
+            return;
+        }
+
+        const list = document.getElementById('taskList');
+        const listItem = document.createElement('li');
+        listItem.className = 'task-item';
+
+        // Форматируем вывод
+        listItem.innerHTML =
+            <span>${desc}</span>
+        <span class="task-date">${date}</span>
+        ;
+
+        list.appendChild(listItem);
+
+        // Очистка полей после записи
+        document.getElementById('taskDesc').value = '';
+        document.getElementById('taskDate').value = '';
+    }
+</script>
+
+</body>
+</html>
