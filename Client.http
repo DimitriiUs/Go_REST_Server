@@ -1,0 +1,23 @@
+### GET request: get task by id
+GET http://localhost:3030/task/106
+
+### POST request: create task
+POST http://localhost:3030/task/
+Content-Type: application/json
+
+{
+  "text": "text-test2",
+  "due": "2026-05-19T00:00:00Z"
+}
+
+### DELETE request: delete all task
+DELETE http://localhost:3030/task/
+
+### DELETE request: delete task by id
+DELETE http://localhost:3030/task/112
+
+### GET request: get tasks by due
+GET http://localhost:3030/due/2026/5/19
+
+### GET request: get all tasks
+GET http://localhost:3030/task/
